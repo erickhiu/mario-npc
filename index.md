@@ -6,7 +6,7 @@ toc: true
 toc_sticky: true
 ---
 
-# Super Mario Bros.
+# Super Mario Bros. Introduction
 
 Super Mario Bros. is a classic platform game developed by Nintendo in 1985. 
 The game follows **Mario**, an Italian plumber, on his quest to rescue 
@@ -23,24 +23,22 @@ ultimately proving that determining whether a given level is passable is an
 <img src="assets/images/mario/mario-meme.png" alt="Mario Meme" class="centered-img" style="max-width: 40%; height: auto;">
 
 
-## Key Elements of the Game
+# Key Elements of the Game
 
 First, we will introduce several key elements of the game that we will use
 in our proofs. 
 
-### Mario's Forms
+## Mario's Forms
 
 Mario has different forms that impact his abilities:
 
 - **Normal Mario**: The default form with basic movement and jumping.
-- **Super Mario**: Gained by collecting a **Super Mushroom**, allowing Mario to break bricks.
-- **Invincible Mario**: Temporarily obtained by collecting a **Super Star**, making Mario immune to enemies and hazards.
+- **Super Mario**: Gained by collecting a **Super Mushroom** <img src="assets/images/mario/mushroom.png" alt="Super Mushroom" width="20">, allowing Mario to break bricks.
+- **Invincible Mario**: Temporarily obtained by collecting a **Super Star** <img src="assets/images/mario/star.png" alt="Super Star" width="20">, making Mario immune to enemies and hazards.
 
-<p align="center">
-    <img src="assets/images/mario/mario-forms.png" alt="Mario Forms" class="centered-img" style="max-width: 100%; height: auto;">
-</p>
+<img src="assets/images/mario/mario-forms.png" alt="Mario Forms" class="centered-img" style="max-width: 100%; height: auto;">
 
-### Basic Environment Elements
+## Basic Environment Elements
 
 Several types of blocks and structures shape the levels in *Super Mario Bros.*:
 
@@ -51,4 +49,27 @@ Several types of blocks and structures shape the levels in *Super Mario Bros.*:
 
 To simplify our problem, we also allow the use of **palace switches** <img src="assets/images/mario/palace-switch.png" alt="Normal Block" width="20">: 
 
-<img src="assets/images/mario/palace-switch-mechanics.png" alt="Palace switch mechanics" class="centered-img" style="max-width: 40%; height: auto;">
+- When Mario activates a **Palace Switch**, it transforms solid blocks of a matching color into transparent blocks.
+- This allows Mario to access previously blocked paths and continue progressing through the level.
+
+<img src="assets/images/mario/palace-switch-mechanics.png" alt="Palace switch mechanics" class="centered-img" style="max-width: 60%; height: auto;">
+
+# Problem Formulation
+
+## The $\textsc{3SAT}$ Problem
+
+Before we define the Super Mario problem, let's introduce (or review) the 3-satisfiability ($\textsc{3SAT}$) problem. 
+
+- A **Boolean formula** is a mathematical expression consisting of Boolean variables (taking values `true` or `false`), 
+logical operators (AND ($\wedge$), OR ($\vee$), NOT ($\neg$)) and parentheses for grouping. It evaluates to either `true` or `false` based on variable assignment.
+- A Boolean formula is **satisfiable** is there exists an assignment to the variables such that the formula evaluates to be true. 
+- A **literal** is a Boolean variable or a negated Boolean variable, as in $x$ or $\neg x$.
+- A **clause** is a *disjunction* ($\vee$) of several literals.
+- A Boolean formula is in **conjunctive normal form** (CNF) is it is a *conjunction* ($\wedge$) of several clauses.
+- A **3 CNF formula** is a CNF formula that has exactly *three* literals per clause. For example, 
+$$\phi = (x_1 \vee x_3 \vee \neg x_4) \wedge (\neg x_2 \vee x_3 \vee \neg x_5)$$
+is a satisfiable 3CNF formula. One true assignment is $x_1 = $ `true` and $x_2 = x_3 = x_4 = x_5 =$ `false`.
+
+The $\textsc{3SAT}$ problem is defined to be the set of satisfiable 3CNF formula:
+$$\textsc{3SAT} = \{\phi: \text{$\phi$ is a satisfiable 3CNF formula}\}$$
+
