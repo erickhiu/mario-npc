@@ -11,6 +11,16 @@ The game follows **Mario**, an Italian plumber, on his quest to rescue
 Mario must navigate challenging levels filled with obstacles, enemies, 
 and power-ups.
 
+Beyond its status as an iconic video game, Super Mario Bros. has been studied in 
+computational complexity theory. In this discussion, we will explore how certain 
+level configurations in the game can be used to encode logical constraints, 
+ultimately proving that determining whether a given level is passable is an 
+**NP-hard** problem.
+
+<img src="assets/images/mario/mario-meme.png" alt="Mario Forms" width="300">
+
+
+
 ## Key Elements of the Game
 
 Mario has different forms that impact his abilities:
