@@ -3,3 +3,10 @@ $link-color: $blue-200;  // Sky Blue
 $border-color: $blue-200;     // Brick Block Brown
 $sidebar-color: $brown-300;    // Brick Block Brown
 $header-color: $blue-200;       // Sky Blue
+
+.centered-img {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+  

@@ -20,7 +20,8 @@ level configurations in the game can be used to encode logical constraints,
 ultimately proving that determining whether a given level is passable is an 
 **NP-hard** problem.
 
-<img src="assets/images/mario/mario-meme.png" alt="Mario Forms" style="max-width: 60%; height: auto;">
+<img src="assets/images/mario/mario-meme.png" alt="Mario Meme" class="centered-img" style="max-width: 40%; height: auto;">
+
 
 ## Key Elements of the Game
 
@@ -35,7 +36,9 @@ Mario has different forms that impact his abilities:
 - **Super Mario**: Gained by collecting a **Super Mushroom**, allowing Mario to break bricks.
 - **Invincible Mario**: Temporarily obtained by collecting a **Super Star**, making Mario immune to enemies and hazards.
 
-<img src="assets/images/mario/mario-forms.png" alt="Mario Forms" style="max-width: 100%; height: auto;">
+<p align="center">
+    <img src="assets/images/mario/mario-forms.png" alt="Mario Forms" class="centered-img" style="max-width: 100%; height: auto;">
+</p>
 
 ### Basic Environment Elements
 
@@ -48,4 +51,4 @@ Several types of blocks and structures shape the levels in *Super Mario Bros.*:
 
 To simplify our problem, we also allow the use of **palace switches** <img src="assets/images/mario/palace-switch.png" alt="Normal Block" width="20">: 
 
-<img src="assets/images/mario/palace-switch-mechanics.png" alt="Palace switch mechanics" style="max-width: 80%; height: auto;">
+<img src="assets/images/mario/palace-switch-mechanics.png" alt="Palace switch mechanics" class="centered-img" style="max-width: 40%; height: auto;">
