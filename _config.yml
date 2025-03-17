@@ -7,6 +7,8 @@ url: https://erickhiu.github.io/mario-npc/
 aux_links:
   Template Repository: https://erickhiu.github.io/mario-npc
 
+color_scheme: mario
+
 just_the_docs:
   custom_css: "assets/css/custom.css"
   math: true
