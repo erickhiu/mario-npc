@@ -10,5 +10,5 @@ aux_links:
 color_scheme: mario
 
 just_the_docs:
-  custom_css: "assets/css/custom.css"
   math: true
+  math_renderer: mathjax
