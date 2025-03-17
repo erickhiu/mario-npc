@@ -9,6 +9,8 @@ aux_links:
 
 # color_scheme: mario
 
-just_the_docs:
-  math: true
-  math_renderer: mathjax
+math: mathjax
+
+# just_the_docs:
+#   math: true
+#   math_renderer: mathjax
