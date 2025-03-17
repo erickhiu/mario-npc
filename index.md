@@ -3,7 +3,6 @@ title: Home
 layout: home
 nav_order: 1
 toc: true
-toc_label: "On This Page"
 toc_sticky: true
 ---
 
