@@ -1,6 +1,10 @@
 ---
 title: Home
 layout: home
+nav_order: 1
+toc: true
+toc_label: "On This Page"
+toc_sticky: true
 ---
 
 # Super Mario Bros.
@@ -17,10 +21,14 @@ level configurations in the game can be used to encode logical constraints,
 ultimately proving that determining whether a given level is passable is an 
 **NP-hard** problem.
 
-<img src="assets/images/mario/mario-meme.png" alt="Mario Forms" style="max-width: 100%; height: auto;">
-
+<img src="assets/images/mario/mario-meme.png" alt="Mario Forms" style="max-width: 60%; height: auto;">
 
 ## Key Elements of the Game
+
+First, we will introduce several key elements of the game that we will use
+in our proofs. 
+
+### Mario's Forms
 
 Mario has different forms that impact his abilities:
 
@@ -39,15 +47,6 @@ Several types of blocks and structures shape the levels in *Super Mario Bros.*:
 - **Bricks** <img src="assets/images/mario/brick.jpg" alt="Brick" width="20">: Can be destroyed by **Super Mario** when hit from below.
 - **Pipes** <img src="assets/images/mario/pipe.png" alt="Pipe" width="20">: Transport Mario between different sections of a level.
 
-To simplify our problem, we allow the use of **palace switches** <img src="assets/images/mario/palace-switch.png" alt="Normal Block" width="20">: 
+To simplify our problem, we also allow the use of **palace switches** <img src="assets/images/mario/palace-switch.png" alt="Normal Block" width="20">: 
 
-<img src="assets/images/mario/palace-switch-mechanics.png" alt="Palace switch mechanics" style="max-width: 100%; height: auto;">
-
-
-
-
-
-
-
-
-
+<img src="assets/images/mario/palace-switch-mechanics.png" alt="Palace switch mechanics" style="max-width: 80%; height: auto;">
