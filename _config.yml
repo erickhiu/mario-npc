@@ -1,8 +1,11 @@
-title: Just the Docs Template
-description: A starter template for a Jeykll site using the Just the Docs theme!
+title: Super Mario Bros is NP-Hard
+description: A website explaining why Super Mario Bros is NP-Hard using the Just the Docs theme.
 theme: just-the-docs
 
-url: https://just-the-docs.github.io
+url: https://erickhiu.github.io/mario-npc/
 
 aux_links:
-  Template Repository: https://github.com/just-the-docs/just-the-docs-template
+  Template Repository: https://erickhiu.github.io/mario-npc
+
+just_the_docs:
+  custom_css: "assets/css/custom.css"
