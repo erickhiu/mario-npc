@@ -200,7 +200,7 @@ To force the player to be in Super Mario form throughout the level (so that they
 We now prove that the correctness of the PTMR from $\text{3SAT}$ to $\text{SMB}$ shown above. Specifically, we need to show that
 
 $$
-\phi \in \text{3SAT} \iff $f(\phi) \in \text{SMB}
+\phi \in \text{3SAT} \iff f(\phi) \in \text{SMB}.
 $$
 
 ($\implies$) If $\phi$ is satisfiable, Mario follows the truth assignment when choosing exits in variable gadgets. Since each clause contains at least one `true` literal, Mario enters at least one literal entrance per clause, toggling the Palace Switch. During the final traversal, all clause gadgets will have their Palace Switches activated, allowing Mario to collect the Super Star and pass through the fire bars, making the level passable.
