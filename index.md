@@ -10,7 +10,7 @@ toc_sticky: true
 
 Super Mario Bros. is a classic platform game developed by Nintendo in 1985. The game follows **Mario**, an Italian plumber, on his quest to rescue **Princess Peach** from the villainous **Bowser**. Along the way, Mario must navigate challenging levels filled with obstacles, enemies, and power-ups.
 
-Beyond its status as an iconic video game, Super Mario Bros. has been studied in computational complexity theory. In this discussion, we will explore how certain level configurations in the game can be used to encode logical constraints, ultimately proving that determining whether a given level is passable is an **NP-hard** problem. (In fact, the problem is NP-complete)
+Beyond its status as an iconic video game, Super Mario Bros. has been studied in computational complexity theory. In this discussion, we will explore how certain level configurations in the game can be used to encode logical constraints, ultimately proving that determining whether a given level is passable is an **NP-hard** problem. (In fact, the problem is NP-complete.)
 
 I also made a **video explanation** of this proof, which you can watch below:
 
@@ -113,7 +113,7 @@ Each variable gadget represents a Boolean variable $x_i$ and provides two possib
 Mario enters the variable gadget from above. The design ensures that once Mario drops down from the entrance platform, he **cannot jump back up**, enforcing a *one-way passage*. This guarantees that each variable is assigned a consistent truth value throughout the level.  
 
 - If Mario chooses the **`true` path**, he will be visiting **clause gadgets containing $x_i$**.
-- If Mario chooses the **`false` path**, he will be visiting **clause gadgets requiring $\neg x_i$**.
+- If Mario chooses the **`false` path**, he will be visiting **clause gadgets containing $\neg x_i$**.
 
     <img src="assets/images/mario/variable-gadget.png" alt="Variable Gadget" class="centered-img" style="max-width: 60%; height: auto;">
 
@@ -136,12 +136,12 @@ When Mario (re)enters the clause gadget using the left entrance, if at least one
 
 Now that we have constructed the variable gadgets and clause gadgets, we need to connect them to form a Super Mario Bros. level that corresponds to a given 3CNF. The connections ensure that Mario traverses the level according to a **consistent Boolean assignment**, enforcing that each Boolean variable has exactly one truth value.
 
-Connecting gadgets means linking a specific exit of one gadget to a specific entrance of another gadget. In the example below:
-- We connect the false exist of the $x_2$ variable gadget to the literal entrance of $\neg x_2$ in the clause gadget for $c_2$. 
-- Then, we connect the literal exit of $\neg x_2$ of the clause gadget to the false entrance of the $x_3$ variable gadget (since this path correspond to $x_2$ = `false`).
-- This ensures that Mario teleports between gadgets using pipes, enforcing the logical structure of the reduction.
-
-<img src="assets/images/mario/connecting-gadgets.png" alt="Connecting gadgets" class="centered-img" style="max-width: 80%; height: auto;">
+> Connecting gadgets means linking a specific exit of one gadget to a specific entrance of another gadget. In the example below:
+> - We connect the false exist of the $x_2$ variable gadget to the literal entrance of $\neg x_2$ in the clause gadget for $c_2$. 
+> - Then, we connect the literal exit of $\neg x_2$ of the clause gadget to the false entrance of the $x_3$ variable gadget (since this path correspond to $x_2$ = `false`).
+> - This ensures that Mario teleports between gadgets using pipes, enforcing the logical structure of the reduction.
+> 
+> <img src="assets/images/mario/connecting-gadgets.png" alt="Connecting gadgets" class="centered-img" style="max-width: 80%; height: auto;">
 
 We will now connect the variable gadgets and the clause gadgets. We will use the formula $\phi = (x_1 \vee x_3 \vee \neg x_4) \wedge (\neg x_2 \vee x_3 \vee \neg x_5)$ from earlier to illustrate along the way. 
 
