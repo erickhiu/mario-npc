@@ -109,7 +109,7 @@ A common trick for reducing from $\text{3SAT}$ is to create variable "gadgets" a
 
 > For example, the formula $\phi = (x_1 \vee x_3 \vee \neg x_4) \wedge (\neg x_2 \vee x_3 \vee \neg x_5)$ has five variables and two clauses, so we will have five variables gadgets and two clause gadgets. 
 
-<img src="assets/images/mario/example-blank.png" alt="Example: Blank" class="centered-img" style="max-width: 80%; height: auto;">
+> <img src="assets/images/mario/example-blank.png" alt="Example: Blank" class="centered-img" style="max-width: 80%; height: auto;">
 
 ### Variable Gadgets
 
@@ -120,7 +120,7 @@ Mario enters the variable gadget from above. The design ensures that once Mario 
 - If Mario chooses the **`true` path**, he will be visiting **clause gadgets containing $x_i$**.
 - If Mario chooses the **`false` path**, he will be visiting **clause gadgets requiring $\neg x_i$**.
 
-<img src="assets/images/mario/variable-gadget.png" alt="Variable Gadget" class="centered-img" style="max-width: 80%; height: auto;">
+    <img src="assets/images/mario/variable-gadget.png" alt="Variable Gadget" class="centered-img" style="max-width: 60%; height: auto;">
 
 ### Clause Gadgets
 
@@ -135,7 +135,7 @@ The clause gadget has **three literal entrance/exit pairs**, each corresponding 
 
 When Mario (re)enters the clause gadget using the left entrance, if at least one of the Palace switches have been toggled before, then Mario can obtain the Super star, transform into invincible Mario, get through the fire bars and exit through the right exit. Otherwise, Mario will not be able to pass through this clause gadget when he enters through the left entrance.
 
-<img src="assets/images/mario/clause-gadget.png" alt="Clause Gadget" class="centered-img" style="max-width: 80%; height: auto;">
+    <img src="assets/images/mario/clause-gadget.png" alt="Clause Gadget" class="centered-img" style="max-width: 80%; height: auto;">
 
 ### Connecting The Gadgets
 
@@ -146,11 +146,9 @@ Connecting gadgets means linking a specific exit of one gadget to a specific ent
 - Then, we connect the literal exit of $\neg x_2$ of the clause gadget to the false entrance of the $x_3$ variable gadget (since this path correspond to $x_2$ = `false`).
 - This ensures that Mario teleports between gadgets using pipes, enforcing the logical structure of the reduction.
 
-<img src="assets/images/mario/connecting-gadgets.png" alt="Connecting gadgets" class="centered-img" style="max-width: 80%; height: auto;">
+> <img src="assets/images/mario/connecting-gadgets.png" alt="Connecting gadgets" class="centered-img" style="max-width: 80%; height: auto;">
 
-#### Step-by-Step Connection
-
-We will now give the full procedure of connecting the gadgets. We will use the formula $\phi = (x_1 \vee x_3 \vee \neg x_4) \wedge (\neg x_2 \vee x_3 \vee \neg x_5)$ from earlier to illustrate along the way. 
+We will now connect the variable gadgets and the clause gadgets. We will use the formula $\phi = (x_1 \vee x_3 \vee \neg x_4) \wedge (\neg x_2 \vee x_3 \vee \neg x_5)$ from earlier to illustrate along the way. 
 
 1. For each variable $x_i$, we connect its exists to all clauses where it appears:
     - The T-exit (if Mario chooses `true`) is connected to **all clause gadgets** where $x_i$ appears positively.
@@ -161,10 +159,22 @@ We will now give the full procedure of connecting the gadgets. We will use the f
    - The exit of the last clause gadget containing $\neg x_i$ to the F-entrance of the $x_{i+1}$ variable gadget.
    - If no such clause gadgets exist, connect directly from the T/F-exit of $x_i$ to the T/F entrance of $x_{i+1}$.
 
-> For example, $x_1$ only appears in $c_1$ and no clauses contain $\neg x_1$, so we have
+    > For example, $x_1$ only appears in $c_1$ and no clauses contain $\neg x_1$, so we have
 
-<img src="assets/images/mario/example-x1.png" alt="Example: x1" class="centered-img" style="max-width: 80%; height: auto;">
+    > <img src="assets/images/mario/example-x1.png" alt="Example: x1" class="centered-img" style="max-width: 80%; height: auto;">
 
-> Similarly, $\neg x_2$ only appears in $c_2$ and no clauses contain $x_2$, so we have
+    > Similarly, $\neg x_2$ only appears in $c_2$ and no clauses contain $x_2$, so we have
 
-<img src="assets/images/mario/example-x1.png" alt="Example: x1" class="centered-img" style="max-width: 80%; height: auto;">
+    > <img src="assets/images/mario/example-x2.png" alt="Example: x2" class="centered-img" style="max-width: 80%; height: auto;">
+
+    > Both $c_1$ and $c_2$ contains $x_3$, so
+
+    > <img src="assets/images/mario/example-x3.png" alt="Example: x3" class="centered-img" style="max-width: 80%; height: auto;">
+
+    > We connect similarly for $x_4$ and $x_5$:
+
+    > <img src="assets/images/mario/example-x3.png" alt="Example: x3" class="centered-img" style="max-width: 80%; height: auto;">
+
+    > <img src="assets/images/mario/example-x3.png" alt="Example: x3" class="centered-img" style="max-width: 80%; height: auto;">
+
+So far, 
