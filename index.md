@@ -8,17 +8,9 @@ toc_sticky: true
 
 # Super Mario Bros.
 
-Super Mario Bros. is a classic platform game developed by Nintendo in 1985. 
-The game follows **Mario**, an Italian plumber, on his quest to rescue 
-**Princess Peach** from the villainous **Bowser**. Along the way, 
-Mario must navigate challenging levels filled with obstacles, enemies, 
-and power-ups.
+Super Mario Bros. is a classic platform game developed by Nintendo in 1985. The game follows **Mario**, an Italian plumber, on his quest to rescue **Princess Peach** from the villainous **Bowser**. Along the way, Mario must navigate challenging levels filled with obstacles, enemies, and power-ups.
 
-Beyond its status as an iconic video game, Super Mario Bros. has been studied in 
-computational complexity theory. In this discussion, we will explore how certain 
-level configurations in the game can be used to encode logical constraints, 
-ultimately proving that determining whether a given level is passable is an 
-**NP-hard** problem. (In fact, the problem is NP-complete)
+Beyond its status as an iconic video game, Super Mario Bros. has been studied in computational complexity theory. In this discussion, we will explore how certain level configurations in the game can be used to encode logical constraints, ultimately proving that determining whether a given level is passable is an **NP-hard** problem. (In fact, the problem is NP-complete)
 
 I also made a **video explanation** of this proof, which you can watch below:
 
@@ -163,7 +155,7 @@ We will now connect the variable gadgets and the clause gadgets. We will use the
    - If no such clause gadgets exist, connect directly from the T/F-exit of $x_i$ to the T/F entrance of $x_{i+1}$.
 
     > For example, $x_1$ only appears in $c_1$ and no clauses contain $\neg x_1$, so we have
-
+    >
     > <img src="assets/images/mario/example-x1.png" alt="Example: x1" class="centered-img" style="max-width: 80%; height: auto;">
     >
     > Similarly, $\neg x_2$ only appears in $c_2$ and no clauses contain $x_2$, so we have
@@ -201,7 +193,7 @@ This ensures that Mario must pass through all clause gadgets in sequence before 
 
 To force the player to be in Super Mario form throughout the level (so that they can't sneak through narrow horizontal path), we have the following start and end gadget, connecting to the entrance of $x_1$ and from the right exit of $c_m$, respectively. 
 
-<img src="assets/images/mario/start-clause.png" alt="Start clause gadget" class="centered-img" style="max-width: 80%; height: auto;">
+<img src="assets/images/mario/start-end-gadget.png" alt="Start end gadget" class="centered-img" style="max-width: 80%; height: auto;">
 
 # Correctness Proof
 
@@ -219,12 +211,18 @@ $$
 
 Each gadget consists of a constant number of elements (blocks, pipes, enemies, and power-ups). Given a 3CNF formula with $n$ variables and $m$ clauses, we construct $n$ variable gadgets, $m$ clause gadgets, plus start and end gadgets, resulting in a total of $n+m+2$ gadgets. Since each gadget has constant size and $n \leq 3m$, the overall level size grows linearly with respect to the input size $3m$, making the reduction polynomial-time.
 
-# Demo Code with Super Mario Construct
-
 # Closing Remarks
 
 The Super Mario Bros. NP-hardness proof is one of my favorite NP-hard problems. I first presented it during my EECS 376 discussion section in Fall 2024 for Halloween, and my students absolutely loved it. This problem sparked interest in the complexity unit and changed how they thought about theoretical computer science, showing that computational complexity can be explored in a fun and engaging way.
 
-If you're interested in learning more, [here's](https://arxiv.org/abs/1203.1895) the original paper. Note that in the paper they used crossover gadgets (which are much more complicated) instead of pipes and Palace Switches.
+If you're interested in learning more, [here]'s(https://arxiv.org/abs/1203.1895) the original paper. Note that in the paper they used crossover gadgets (which are much more complicated) instead of pipes and Palace Switches.
 
 I hope this exploration of Super Mario Bros. as an NP-hard problem has been as exciting for you as it has been for me!
+
+# Achknowledgement
+
+I would like to thank the Super Mario Construct team for their assistance in developing and testing the level mechanics used in this reduction. Special thanks to Luigibonus (Discord username) for the idea of using Palace Switches to simulate logical constraints in the reduction.
+
+I am also grateful to Professors Chris Peikert and Nicole Wein from EECS 376 for their support and insightful discussions on theoretical computer science throughout my time teaching EECS 376.
+
+Finally, thanks to my students in EECS 376 (Fall 2024) for their enthusiasm and engagement—it was their curiosity that made this proof presentation so much fun!
