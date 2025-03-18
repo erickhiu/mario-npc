@@ -47,7 +47,7 @@ We will show that the Super Mario Bros. problem is NP-hard via a [polynomial-tim
 
 ## The Super Mario Bros. Problem
 
-Before we formally define the complexity of the Super Mario Bros. problem, let’s describe the core mechanics of the game that affect level passability.
+Before we formally define the Super Mario Bros. problem, let’s describe the core mechanics of the game that affect level passability.
 
 - A Super Mario Bros. level consists of platforms, obstacles, enemies, and power-ups that Mario must navigate to reach the goal.
 - A level is **passable** if Mario can reach the goal given the available power-ups and mechanics.
