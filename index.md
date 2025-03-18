@@ -215,7 +215,7 @@ Each gadget consists of a constant number of elements (blocks, pipes, enemies, a
 
 The Super Mario Bros. NP-hardness proof is one of my favorite NP-hard problems. I first presented it during my EECS 376 discussion section in Fall 2024 for Halloween, and my students absolutely loved it. This problem sparked interest in the complexity unit and changed how they thought about theoretical computer science, showing that computational complexity can be explored in a fun and engaging way.
 
-If you're interested in learning more, [here]'s(https://arxiv.org/abs/1203.1895) the original paper. Note that in the paper they used crossover gadgets (which are much more complicated) instead of pipes and Palace Switches.
+If you're interested in learning more, [here](https://arxiv.org/abs/1203.1895)'s the original paper. Note that in the paper they used crossover gadgets (which are much more complicated) instead of pipes and Palace Switches.
 
 I hope this exploration of Super Mario Bros. as an NP-hard problem has been as exciting for you as it has been for me!
 
