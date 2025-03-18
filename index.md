@@ -135,7 +135,7 @@ The clause gadget has **three literal entrance/exit pairs**, each corresponding 
 
 When Mario (re)enters the clause gadget using the left entrance, if at least one of the Palace switches have been toggled before, then Mario can obtain the Super star, transform into invincible Mario, get through the fire bars and exit through the right exit. Otherwise, Mario will not be able to pass through this clause gadget when he enters through the left entrance.
 
-    <img src="assets/images/mario/clause-gadget.png" alt="Clause Gadget" class="centered-img" style="max-width: 80%; height: auto;">
+<img src="assets/images/mario/clause-gadget.png" alt="Clause Gadget" class="centered-img" style="max-width: 80%; height: auto;">
 
 ### Connecting The Gadgets
 
@@ -146,7 +146,7 @@ Connecting gadgets means linking a specific exit of one gadget to a specific ent
 - Then, we connect the literal exit of $\neg x_2$ of the clause gadget to the false entrance of the $x_3$ variable gadget (since this path correspond to $x_2$ = `false`).
 - This ensures that Mario teleports between gadgets using pipes, enforcing the logical structure of the reduction.
 
-> <img src="assets/images/mario/connecting-gadgets.png" alt="Connecting gadgets" class="centered-img" style="max-width: 80%; height: auto;">
+<img src="assets/images/mario/connecting-gadgets.png" alt="Connecting gadgets" class="centered-img" style="max-width: 80%; height: auto;">
 
 We will now connect the variable gadgets and the clause gadgets. We will use the formula $\phi = (x_1 \vee x_3 \vee \neg x_4) \wedge (\neg x_2 \vee x_3 \vee \neg x_5)$ from earlier to illustrate along the way. 
 
@@ -160,21 +160,28 @@ We will now connect the variable gadgets and the clause gadgets. We will use the
    - If no such clause gadgets exist, connect directly from the T/F-exit of $x_i$ to the T/F entrance of $x_{i+1}$.
 
     > For example, $x_1$ only appears in $c_1$ and no clauses contain $\neg x_1$, so we have
-
     > <img src="assets/images/mario/example-x1.png" alt="Example: x1" class="centered-img" style="max-width: 80%; height: auto;">
-
     > Similarly, $\neg x_2$ only appears in $c_2$ and no clauses contain $x_2$, so we have
-
     > <img src="assets/images/mario/example-x2.png" alt="Example: x2" class="centered-img" style="max-width: 80%; height: auto;">
-
     > Both $c_1$ and $c_2$ contains $x_3$, so
-
     > <img src="assets/images/mario/example-x3.png" alt="Example: x3" class="centered-img" style="max-width: 80%; height: auto;">
-
     > We connect similarly for $x_4$ and $x_5$:
+    > <img src="assets/images/mario/example-x4.png" alt="Example: x4" class="centered-img" style="max-width: 80%; height: auto;">
+    > <img src="assets/images/mario/example-x5.png" alt="Example: x5" class="centered-img" style="max-width: 80%; height: auto;">
 
-    > <img src="assets/images/mario/example-x3.png" alt="Example: x3" class="centered-img" style="max-width: 80%; height: auto;">
+So far, if there is a satisifable assignment, there is a path for Mario
+ - Starting at $x_1$, going throuugh all clause gadgets containg $x_1$ or $\neg x_1$ using $x_1$'s T or F exit (depending on whether $x_1$ is assigned with True or False)
+ - Then get to $x_2$, going through all clause gadgets containing ...
+ - ...
+ - Then get to $x_n$, going through all clause gadgets containing ...
 
-    > <img src="assets/images/mario/example-x3.png" alt="Example: x3" class="centered-img" style="max-width: 80%; height: auto;">
+Next, we want to make sure that every clause has at least one true literal. After the last clause gadget containg $x_n$ or $\neg x_n$, we connect its literal exit to the left entrance of $c_1$. Then, we connect the right exit of $c_1$ to the left entrance of $c_2$, and so on, until $c_m$. 
 
-So far, 
+<img src="assets/images/mario/final-traversal-connection.png" alt="Example: Final traversal connection" class="centered-img" style="max-width: 80%; height: auto;">
+
+This ensures that Mario must pass through all clause gadgets in sequence before reaching the goal.
+
+- If at least one literal in a clause is `true`, Mario previously toggled the Palace Switch, making the solid block transparent and allowing him to collect a Super Star to pass through the fire bars.
+- If all literals in a clause were `false`, its Palace Switch remains inactive, blocking Mario and making the level impassable.
+
+<img src="assets/images/mario/clause-gadget-final-traversal.png" alt="Clause gadget: Final traversal" class="centered-img" style="max-width: 80%; height: auto;">
