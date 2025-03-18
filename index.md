@@ -40,7 +40,7 @@ is a satisfiable 3CNF formula. One true assignment is $x_1 = $ `true` and $x_2 =
 The $\text{3SAT}$ problem is defined to be the set of satisfiable 3CNF formula:
 
 $$
-\text{3SAT} = \{\phi: \text{$\phi$ is a satisfiable 3CNF formula}\}
+\text{3SAT} = \{\phi: \text{$\phi$ is a satisfiable 3CNF formula}\}.
 $$
 
 We will show that the Super Mario Bros. problem is NP-hard via a [polynomial-time mapping reduction](https://eecs376.github.io/notes/complexity.html#polynomial-time-mapping-reductions) from $\text{3SAT}$. 
@@ -85,7 +85,7 @@ To simplify our problem, we also allow the use of **palace switches** <img src="
 We define the **Super Mario Bros.** ($\text{SMB}$) language as the set of passable Super Mario Bros. levels:
 
 $$
-\text{SMB} = \{ S : S \text{ is a passable Super Mario Bros. level}. \}
+\text{SMB} = \{ S : S \text{ is a passable Super Mario Bros. level}\}.
 $$
 
 > - **Example of a non-passable level**: Mario (even as Super Mario) cannot pass through fire bars.
@@ -180,7 +180,7 @@ So far, if there is a satisifable assignment, there is a path for Mario
 
 Next, we want to make sure that every clause has at least one true literal. After the last clause gadget containg $x_n$ or $\neg x_n$, we connect its literal exit to the left entrance of $c_1$. Then, we connect the right exit of $c_1$ to the left entrance of $c_2$, and so on, until $c_m$. 
 
-<img src="assets/images/mario/final-traversal-connection.png" alt="Example: Final traversal connection" class="centered-img" style="max-width: 80%; height: auto;">
+> <img src="assets/images/mario/final-traversal-connection.png" alt="Example: Final traversal connection" class="centered-img" style="max-width: 80%; height: auto;">
 
 This ensures that Mario must pass through all clause gadgets in sequence before reaching the goal.
 
