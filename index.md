@@ -20,7 +20,10 @@ level configurations in the game can be used to encode logical constraints,
 ultimately proving that determining whether a given level is passable is an 
 **NP-hard** problem. (In fact, the problem is NP-complete)
 
-<img src="assets/images/mario/mario-meme.png" alt="Mario Meme" class="centered-img" style="max-width: 40%; height: auto;">
+I also made a **video explanation** of this proof, which you can watch below:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xBVpyZcmRi0?si=PJm5Efyg9Pv7AaLF" 
+title="Super Mario Bros. NP-Hardness Proof" frameborder="0" allowfullscreen></iframe>
 
 # Problem Formulation
 
@@ -93,13 +96,13 @@ $$
 \text{SMB} = \{ S : S \text{ is a passable Super Mario Bros. level}. \}
 $$
 
-- **Example of a non-passable level**: Mario (even as Super Mario) cannot pass through fire bars.
-
+> - **Example of a non-passable level**: Mario (even as Super Mario) cannot pass through fire bars.
+> 
 <img src="assets/images/mario/not-passable.png" alt="Not passable" class="centered-img" style="max-width: 80%; height: auto;">
 
-- **Example of a passable level**: Mario can collect a star from an item block, turn into Invincible Mario, and pass through fire bars.
-
-<img src="assets/images/mario/passable.png" alt="Passable" class="centered-img" style="max-width: 80%; height: auto;">
+> - **Example of a passable level**: Mario can collect a star from an item block, turn into Invincible Mario, and pass through fire bars.
+>
+> <img src="assets/images/mario/passable.png" alt="Passable" class="centered-img" style="max-width: 80%; height: auto;">
 
 # Polynomial-Time Mapping Reduction (PTMR)
 
@@ -108,10 +111,10 @@ Now, we will describe a PTMR from $\text{3SAT}$ to $\text{SMB}$. Given an a 3CNF
 A common trick for reducing from $\text{3SAT}$ is to create variable "gadgets" and clause "gadgets". In our reduction, each gadget would correspond to a part of a level. For simplicity, we will put each part in a map and use pipes to teleports between them.
 
 > For example, the formula $\phi = (x_1 \vee x_3 \vee \neg x_4) \wedge (\neg x_2 \vee x_3 \vee \neg x_5)$ has five variables and two clauses, so we will have five variables gadgets and two clause gadgets. 
-
+>
 > <img src="assets/images/mario/example-blank.png" alt="Example: Blank" class="centered-img" style="max-width: 80%; height: auto;">
 
-### Variable Gadgets
+## Variable Gadgets
 
 Each variable gadget represents a Boolean variable $x_i$ and provides two possible exits: one corresponding to $x_i =$ `true` and one to $x_i =$ `false`. 
 
@@ -122,7 +125,7 @@ Mario enters the variable gadget from above. The design ensures that once Mario 
 
     <img src="assets/images/mario/variable-gadget.png" alt="Variable Gadget" class="centered-img" style="max-width: 60%; height: auto;">
 
-### Clause Gadgets
+## Clause Gadgets
 
 Each clause gadget represents a clause in the 3SAT formula and ensures that Mario can only pass through if at least one of the literals in the clause is `true`. There are two ways of entering the clause gadget: either through the literal entrances or the left entrance. 
 
@@ -137,7 +140,7 @@ When Mario (re)enters the clause gadget using the left entrance, if at least one
 
 <img src="assets/images/mario/clause-gadget.png" alt="Clause Gadget" class="centered-img" style="max-width: 80%; height: auto;">
 
-### Connecting The Gadgets
+## Connecting The Gadgets
 
 Now that we have constructed the variable gadgets and clause gadgets, we need to connect them to form a Super Mario Bros. level that corresponds to a given 3CNF. The connections ensure that Mario traverses the level according to a **consistent Boolean assignment**, enforcing that each Boolean variable has exactly one truth value.
 
@@ -160,13 +163,21 @@ We will now connect the variable gadgets and the clause gadgets. We will use the
    - If no such clause gadgets exist, connect directly from the T/F-exit of $x_i$ to the T/F entrance of $x_{i+1}$.
 
     > For example, $x_1$ only appears in $c_1$ and no clauses contain $\neg x_1$, so we have
+
     > <img src="assets/images/mario/example-x1.png" alt="Example: x1" class="centered-img" style="max-width: 80%; height: auto;">
+    >
     > Similarly, $\neg x_2$ only appears in $c_2$ and no clauses contain $x_2$, so we have
+    >
     > <img src="assets/images/mario/example-x2.png" alt="Example: x2" class="centered-img" style="max-width: 80%; height: auto;">
+    >
     > Both $c_1$ and $c_2$ contains $x_3$, so
+    >
     > <img src="assets/images/mario/example-x3.png" alt="Example: x3" class="centered-img" style="max-width: 80%; height: auto;">
+    >
     > We connect similarly for $x_4$ and $x_5$:
+    >
     > <img src="assets/images/mario/example-x4.png" alt="Example: x4" class="centered-img" style="max-width: 80%; height: auto;">
+    >
     > <img src="assets/images/mario/example-x5.png" alt="Example: x5" class="centered-img" style="max-width: 80%; height: auto;">
 
 So far, if there is a satisifable assignment, there is a path for Mario
@@ -185,3 +196,35 @@ This ensures that Mario must pass through all clause gadgets in sequence before 
 - If all literals in a clause were `false`, its Palace Switch remains inactive, blocking Mario and making the level impassable.
 
 <img src="assets/images/mario/clause-gadget-final-traversal.png" alt="Clause gadget: Final traversal" class="centered-img" style="max-width: 80%; height: auto;">
+
+## Start and End Gadgets
+
+To force the player to be in Super Mario form throughout the level (so that they can't sneak through narrow horizontal path), we have the following start and end gadget, connecting to the entrance of $x_1$ and from the right exit of $c_m$, respectively. 
+
+<img src="assets/images/mario/start-clause.png" alt="Start clause gadget" class="centered-img" style="max-width: 80%; height: auto;">
+
+# Correctness Proof
+
+We now prove that the correctness of the PTMR from $\text{3SAT}$ to $\text{SMB}$ shown above. Specifically, we need to show that
+
+$$
+\phi \in \text{3SAT} \iff $f(\phi) \in \text{SMB}
+$$
+
+($\implies$) If $\phi$ is satisfiable, Mario follows the truth assignment when choosing exits in variable gadgets. Since each clause contains at least one `true` literal, Mario enters at least one literal entrance per clause, toggling the Palace Switch. During the final traversal, all clause gadgets will have their Palace Switches activated, allowing Mario to collect the Super Star and pass through the fire bars, making the level passable.
+
+($\impliedby$) If $f(\phi)$ is passable, Mario must have reached the goal, meaning he successfully exited all clause gadgets. Since the Super Star is only accessible if a Palace Switch was toggled, Mario must have entered at least one literal entrance per clause, implying at least one literal in each clause was `true`. This directly corresponds to a satisfying assignment for $\phi$, proving $\phi \in \text{3SAT}$. 
+
+# Runtime Analysis
+
+Each gadget consists of a constant number of elements (blocks, pipes, enemies, and power-ups). Given a 3CNF formula with $n$ variables and $m$ clauses, we construct $n$ variable gadgets, $m$ clause gadgets, plus start and end gadgets, resulting in a total of $n+m+2$ gadgets. Since each gadget has constant size and $n \leq 3m$, the overall level size grows linearly with respect to the input size $3m$, making the reduction polynomial-time.
+
+# Demo Code with Super Mario Construct
+
+# Closing Remarks
+
+The Super Mario Bros. NP-hardness proof is one of my favorite NP-hard problems. I first presented it during my EECS 376 discussion section in Fall 2024 for Halloween, and my students absolutely loved it. This problem sparked interest in the complexity unit and changed how they thought about theoretical computer science, showing that computational complexity can be explored in a fun and engaging way.
+
+If you're interested in learning more, [here's](https://arxiv.org/abs/1203.1895) the original paper. Note that in the paper they used crossover gadgets (which are much more complicated) instead of pipes and Palace Switches.
+
+I hope this exploration of Super Mario Bros. as an NP-hard problem has been as exciting for you as it has been for me!
