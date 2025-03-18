@@ -65,7 +65,7 @@ Mario has different forms that impact his abilities:
 
 - **Normal Mario**: The default form with basic movement and jumping.
 - **Super Mario**: Gained by collecting a **Super Mushroom** <img src="assets/images/mario/mushroom.png" alt="Super Mushroom" width="20">, allowing Mario to break bricks.
-- **Invincible Mario**: Temporarily obtained by collecting a **Super Star** <img src="assets/images/mario/star.png" alt="Super Star" width="20">, making Mario immune to enemies and hazards.
+- **Invincible Mario**: Temporarily obtained by collecting a **Super Star** <img src="assets/images/mario/star.jpg" alt="Super Star" width="20">, making Mario immune to enemies and hazards.
 
 <img src="assets/images/mario/mario-forms.png" alt="Mario Forms" class="centered-img" style="max-width: 100%; height: auto;">
 
@@ -95,8 +95,16 @@ $$
 
 - **Example of a non-passable level**: Mario (even as Super Mario) cannot pass through fire bars.
 
-<img src="assets/images/mario/not-passable.png" alt="Not passable" class="centered-img" style="max-width: 80%; height: auto;">
+<img src="assets/images/mario/unpassable.png" alt="Not passable" class="centered-img" style="max-width: 100%; height: auto;">
 
 - **Example of a passable level**: Mario can collect a star from an item block, turn into Invincible Mario, and pass through fire bars.
 
-<img src="assets/images/mario/passable.png" alt="Passable" class="centered-img" style="max-width: 80%; height: auto;">
+<img src="assets/images/mario/passable.png" alt="Passable" class="centered-img" style="max-width: 100%; height: auto;">
+
+# Polynomial-Time Mapping Reduction (PTMR)
+
+Now, we will describe a PTMR from $\text{3SAT}$ to $\text{SMB}$. Given an a 3CNF formula, our goal is to construct a Super Mario Bros. level that is passable if and only if the formula is satisfiable. 
+
+## Gadgets
+
+A common trick for reducing from $\text{3SAT}$ is to create variable "gadgets" and clause "gadgets". 
