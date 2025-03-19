@@ -5,7 +5,7 @@ layout: default
 
 # Super Mario Construct
 
-[Super Mario Construct](https://levelsharesquare.com/games/supermarioconstruct3) is a fan-made level editor that allows users to create and play custom Mario levels. I used Super Mario Construct to visualize the level layouts in this proof and to create an interactive demo featured in my video.
+[Super Mario Construct](https://levelsharesquare.com/games/supermarioconstruct) is a fan-made level editor that allows users to create and play custom Mario levels. I used Super Mario Construct to visualize the level layouts in this proof and to create an interactive demo featured in my video.
 
 # Demo Level
 
