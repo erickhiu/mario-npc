@@ -219,7 +219,7 @@ If you're interested in learning more, [here](https://arxiv.org/abs/1203.1895)'s
 
 I hope this exploration of Super Mario Bros. as an NP-hard problem has been as exciting for you as it has been for me!
 
-# Achknowledgement
+# Acknowledgement
 
 I would like to thank the Super Mario Construct team for their assistance in developing and testing the level mechanics used in this reduction. Special thanks to Luigibonus (Discord username) for the idea of using Palace Switches to simulate logical constraints in the reduction.
 
