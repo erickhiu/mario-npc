@@ -17,7 +17,7 @@ $$
 
 If you want to try playing the level, follow these steps:
 
-1. Navigate to [Super Mario Construct](https://levelsharesquare.com/games/supermarioconstruct3).
+1. Navigate to [Super Mario Construct](https://levelsharesquare.com/games/supermarioconstruct).
 2. Click on `Play level`.
 3. Copy and paste the following level code into the text box and press `Play`.
 ```
